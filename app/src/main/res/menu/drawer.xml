@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/navigation_item_1"
+            android:checked="true"
+            android:icon="@drawable/abc_btn_radio_material"
+            android:title="今日情感" />
+
+        <item
+            android:id="@+id/navigation_item_2"
+            android:icon="@drawable/abc_btn_radio_material"
+            android:title="番茄" />
+
+    </group>
+
+    <item android:title="Version">
+
+        <menu>
+
+            <item
+                android:icon="@drawable/abc_btn_radio_material"
+                android:title="Android" />
+
+            <item
+                android:icon="@drawable/abc_btn_radio_material"
+                android:title="iOS" />
+        </menu>
+    </item>
+
+</menu>

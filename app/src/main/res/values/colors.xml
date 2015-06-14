@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue">#303F9F</color>
+    <color name="green">#4CAF50</color>
+    <color name="green_dark">#388e3c</color>
+    <color name="green_teal">#009688</color>
+    <color name="purple">#673AB7</color>
+    <color name="red">#F44336</color>
+    <color name="cyan">#00BCD4</color>
+    <color name="lime">#CDDC39</color>
+    <color name="orange">#FFCC80</color>
+    <color name="deep_orange">#FFA726</color>
+    <color name="lightgray">#fafaf5</color>
+    <!--<color name="black">#484432</color>-->
+    <color name="darkgray">#7b7769</color>
+    <color name="gray">#a3a090</color>
+    <color name="border">#dbdbce</color>
+    <color name="transparent">#00000000</color>
+    <color name="bg">#efefeb</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="main_page_font">#8c8c8c</color>
+    <color name="main_page_font_bg">#E6E6E6</color>
+    <color name="title_bar_bg">#4bc1d2</color>
+    <color name="text_blue">#2aa4cf</color>
+    <color name="text_blue_press">#5026c2f0</color>
+    <color name="text_green">#4CAF50</color>
+    <color name="text_green_press">#504CAF50</color>
+    <color name="text_black">#646464</color>
+    <color name="text_yellow">#ff6800</color>
+    <color name="list_item_press">#EBEBEB</color>
+    <color name="item_pressed_color_transparent">#50ff0000</color>
+    <color name="half_tra">#90000000</color>
+    <color name="cursor_divide_line_color">#c8c8c8</color>
+    <color name="shape_round_color">#cecece</color>
+    <color name="txt_normal_day">#C1FFC1</color>
+    <color name="txt_normal_night">#808080</color>
+    <color name="my_actionbar_style_theme_color">#ffffff</color>
+    <color name="primary">#ff212121</color>
+    <color name="primary_dark">#90212121</color>
+    <color name="accent">#8A2BE2</color>
+    <color name="background_material_dark">#ff303030</color>
+
+    <!--夜间模式-->
+    <color name="cursor_text_day">#C1FFC1</color>
+    <color name="cursor_text_night">#808080</color>
+    <color name="line_day">#dddddd</color>
+    <color name="line_night">#343434</color>
+    <color name="item_bg_night">#474747</color>
+    <color name="item_bg_press">#363636</color>
+    <color name="shape_stroke_day">#cecece</color>
+    <color name="shape_stroke_night">#343434</color>
+    <!--夜间模式 end-->
+    <color name="cardview_initial_background">#71C3DE</color>
+</resources>
