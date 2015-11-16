@@ -10,12 +10,12 @@
             android:id="@+id/navigation_item_1"
             android:checked="true"
             android:icon="@drawable/abc_btn_radio_material"
-            android:title="今日情感" />
+            android:title="微言-晨读励志" />
 
         <item
             android:id="@+id/navigation_item_2"
             android:icon="@drawable/abc_btn_radio_material"
-            android:title="番茄" />
+            android:title="大湿说-搞笑视频" />
 
     </group>
 

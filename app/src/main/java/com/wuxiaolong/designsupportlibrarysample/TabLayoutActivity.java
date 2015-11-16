@@ -1,4 +1,4 @@
-package com.example.wuxiaolongl.designsupportlibrarysample;
+package com.wuxiaolong.designsupportlibrarysample;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;

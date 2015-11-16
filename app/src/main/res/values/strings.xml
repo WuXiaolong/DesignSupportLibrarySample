@@ -8,4 +8,8 @@
     <string name="title_activity_navigation_view">NavigationViewActivity</string>
     <string name="title_activity_coordinator_layout">CoordinatorLayoutActivity</string>
     <string name="title_activity_app_bar_layout">AppBarLayoutActivity</string>
+    <string name="title_activity_base">BaseActivity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

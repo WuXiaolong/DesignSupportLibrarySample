@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="primary">#03A9F4</color>
+    <color name="primary_dark">#039BE5</color>
+    <color name="accent">#03A9F4</color>
+    <color name="tab_text_color">#81D4FA</color>
+    <color name="text_color_primary">#212121</color>
+    <color name="text_second_color_primary">#646464</color>
+
+
+
     <color name="blue">#303F9F</color>
     <color name="green">#4CAF50</color>
     <color name="green_dark">#388e3c</color>
@@ -36,9 +46,6 @@
     <color name="txt_normal_day">#C1FFC1</color>
     <color name="txt_normal_night">#808080</color>
     <color name="my_actionbar_style_theme_color">#ffffff</color>
-    <color name="primary">#ff212121</color>
-    <color name="primary_dark">#90212121</color>
-    <color name="accent">#8A2BE2</color>
     <color name="background_material_dark">#ff303030</color>
 
     <!--夜间模式-->
