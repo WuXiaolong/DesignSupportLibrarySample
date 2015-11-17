@@ -10,23 +10,23 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * http://blog.grafixartist.com/easy-navigation-drawer-with-design-support-library/
+ * Created by 小尛龙 on 2015/11/16 0016.
  */
 
 public class MainActivity extends BaseActivity {
     private DrawerLayout mDrawerLayout;
-    Toolbar mToolbar;
+    private Toolbar mToolbar;
     private ActionBarDrawerToggle mDrawerToggle;
-    NavigationView navigationView;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +57,12 @@ public class MainActivity extends BaseActivity {
 
     private void initNavigationViewHeader() {
         navigationView = (NavigationView) findViewById(R.id.navigation);
-        View mNavigationViewHeader = LayoutInflater.from(this).inflate(R.layout.drawer_header, null, false);
-        //设置头像，布局app:headerLayout所指定的头布局或者app:headerLayout="@layout/drawer_header"
-        navigationView.addHeaderView(mNavigationViewHeader);
+        //设置头像，布局app:headerLayout="@layout/drawer_header"所指定的头布局
+        View view = navigationView.inflateHeaderView(R.layout.drawer_header);
+        TextView userName = (TextView) view.findViewById(R.id.userName);
+        userName.setText(R.string.author);
+        //View mNavigationViewHeader = View.inflate(MainActivity.this, R.layout.drawer_header, null);
+        //navigationView.addHeaderView(mNavigationViewHeader);//此方法在魅族note 1，头像显示不全
         //菜单点击事件
         navigationView.setNavigationItemSelectedListener(new NavigationItemSelected());
     }
@@ -67,14 +70,14 @@ public class MainActivity extends BaseActivity {
     class NavigationItemSelected implements NavigationView.OnNavigationItemSelectedListener {
         @Override
         public boolean onNavigationItemSelected(MenuItem menuItem) {
-            mToolbar.setTitle(menuItem.getTitle());
+            //mToolbar.setTitle(menuItem.getTitle());
             mDrawerLayout.closeDrawers();
+            menuItem.setChecked(true);
             switch (menuItem.getItemId()) {
                 case R.id.navigation_item_1:
-                    menuItem.setChecked(true);
+
                     return true;
                 case R.id.navigation_item_2:
-                    menuItem.setChecked(true);
                     return true;
                 default:
 
@@ -119,34 +122,32 @@ public class MainActivity extends BaseActivity {
         setupViewPager(viewPager);
         // 设置ViewPager的数据等
         tabLayout.setupWithViewPager(viewPager);
-//        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);//适合很多tab
+        //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);//适合很多tab
         tabLayout.setTabMode(TabLayout.MODE_FIXED);//tab均分,适合少的tab
-//tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);//tab均分,适合少的tab,TabLayout.GRAVITY_CENTER
+        //tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);//tab均分,适合少的tab,TabLayout.GRAVITY_CENTER
 
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-
-
         Fragment newfragment = new ContentFragment();
         Bundle data = new Bundle();
         data.putInt("id", 0);
         newfragment.setArguments(data);
-        adapter.addFrag(newfragment, "每日推荐");
+        adapter.addFrag(newfragment, getString(R.string.page1));
 
         newfragment = new ContentFragment();
         data = new Bundle();
         data.putInt("id", 3);
         newfragment.setArguments(data);
-        adapter.addFrag(newfragment, "职场指南");
+        adapter.addFrag(newfragment, getString(R.string.page2));
 
 
         newfragment = new ContentFragment();
         data = new Bundle();
         data.putInt("id", 1);
         newfragment.setArguments(data);
-        adapter.addFrag(newfragment, "经典语录");
+        adapter.addFrag(newfragment, getString(R.string.page3));
 
 
         viewPager.setAdapter(adapter);

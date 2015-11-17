@@ -12,12 +12,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class ContentFragment extends Fragment {
 
-    RecyclerView mRecyclerView;
+    private RecyclerView mRecyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,16 +26,16 @@ public class ContentFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRecyclerView= (RecyclerView) view.findViewById(R.id.recycler_view);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        RecyclerViewAdapter recyclerViewAdapter=new RecyclerViewAdapter(getActivity(),setList());
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getActivity(), setList());
         mRecyclerView.setAdapter(recyclerViewAdapter);
     }
 
     private List<String> setList() {
         List<String> dataList = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
-            dataList.add("Frist" + i);
+            dataList.add(getActivity().getString(R.string.test_data) + i);
         }
         return dataList;
 

@@ -19,7 +19,7 @@
 
     </group>
 
-    <item android:title="Version">
+    <item android:title="其他">
 
         <menu>
 
@@ -29,7 +29,7 @@
 
             <item
                 android:icon="@drawable/abc_btn_radio_material"
-                android:title="iOS" />
+                android:title="IOS" />
         </menu>
     </item>
 
