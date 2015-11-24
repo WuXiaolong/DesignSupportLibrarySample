@@ -1,6 +1,6 @@
 # Android Design Support Library Sample
 ## 效果预览
-![](http://7q5c2h.com1.z0.glb.clouddn.com/designsupportlibrarysample.gif)
+![](https://github.com/WuXiaolong/DesignSupportLibrarySample/raw/master/screenshots/designsupportlibrarysample.gif)
 
 <!--more-->
 
