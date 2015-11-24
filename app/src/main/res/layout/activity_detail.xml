@@ -28,7 +28,6 @@
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/show_img"
                 app:layout_collapseMode="pin" />
 
             <android.support.v7.widget.Toolbar

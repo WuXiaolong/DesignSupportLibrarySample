@@ -2,19 +2,23 @@ package com.wuxiaolong.designsupportlibrarysample;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ContentFragment extends Fragment {
-
-    private RecyclerView mRecyclerView;
+    protected boolean isVisible;
+    private PullLoadMoreRecyclerView mPullLoadMoreRecyclerView;
+    private List<String> mDataList = new ArrayList<>();
+    private RecyclerViewAdapter mRecyclerViewAdapter;
+    private String mTitle;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,18 +30,83 @@ public class ContentFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getActivity(), setList());
-        mRecyclerView.setAdapter(recyclerViewAdapter);
+        mTitle = this.getArguments().getString("title");
+        mPullLoadMoreRecyclerView = (PullLoadMoreRecyclerView) view.findViewById(R.id.pullLoadMoreRecyclerView);
+        mPullLoadMoreRecyclerView.setLinearLayout();
+        mPullLoadMoreRecyclerView.setRefreshing(true);
+        mRecyclerViewAdapter = new RecyclerViewAdapter(getActivity(), mDataList);
+        mPullLoadMoreRecyclerView.setAdapter(mRecyclerViewAdapter);
+        mPullLoadMoreRecyclerView.setOnPullLoadMoreListener(new PullLoadMoreRecyclerView.PullLoadMoreListener() {
+            @Override
+            public void onRefresh() {
+                mDataList.clear();
+                setList();
+
+            }
+
+            @Override
+            public void onLoadMore() {
+                loadMore();
+            }
+        });
     }
 
-    private List<String> setList() {
-        List<String> dataList = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            dataList.add(getActivity().getString(R.string.test_data) + i);
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (getUserVisibleHint()) {
+            isVisible = true;
+            onVisible();
+        } else {
+            isVisible = false;
+            onInvisible();
         }
-        return dataList;
+
+    }
+
+    protected void onVisible() {
+        lazyLoad();
+    }
+
+    protected void lazyLoad() {
+        if (!isVisible) {
+            return;
+        }
+        setList();
+    }
+
+    protected void onInvisible() {
+    }
+
+    protected void loadMore() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                for (int j = i; j < i + 20; j++) {
+                    mDataList.add(mTitle + "\n" + getActivity().getString(R.string.test_data) + j);
+                }
+                i = i + 20;
+                mRecyclerViewAdapter.notifyDataSetChanged();
+                mPullLoadMoreRecyclerView.setPullLoadMoreCompleted();
+            }
+        }, 3000);
+
+    }
+
+    int i = 0;
+
+    private void setList() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                for (i = 0; i < 20; i++) {
+                    mDataList.add(mTitle + "\n" + getActivity().getString(R.string.test_data) + i);
+                }
+                mRecyclerViewAdapter.notifyDataSetChanged();
+                mPullLoadMoreRecyclerView.setPullLoadMoreCompleted();
+            }
+        }, 3000);
+
 
     }
 }

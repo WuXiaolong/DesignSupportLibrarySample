@@ -119,6 +119,7 @@ public class MainActivity extends BaseActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+        viewPager.setOffscreenPageLimit(3);
         setupViewPager(viewPager);
         // 设置ViewPager的数据等
         tabLayout.setupWithViewPager(viewPager);
@@ -133,19 +134,22 @@ public class MainActivity extends BaseActivity {
         Fragment newfragment = new ContentFragment();
         Bundle data = new Bundle();
         data.putInt("id", 0);
+        data.putString("title", getString(R.string.page1));
         newfragment.setArguments(data);
         adapter.addFrag(newfragment, getString(R.string.page1));
 
         newfragment = new ContentFragment();
         data = new Bundle();
-        data.putInt("id", 3);
+        data.putInt("id", 1);
+        data.putString("title", getString(R.string.page2));
         newfragment.setArguments(data);
         adapter.addFrag(newfragment, getString(R.string.page2));
 
 
         newfragment = new ContentFragment();
         data = new Bundle();
-        data.putInt("id", 1);
+        data.putInt("id", 2);
+        data.putString("title", getString(R.string.page3));
         newfragment.setArguments(data);
         adapter.addFrag(newfragment, getString(R.string.page3));
 
