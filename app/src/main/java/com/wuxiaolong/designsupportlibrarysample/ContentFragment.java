@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContentFragment extends Fragment {
-    protected boolean isVisible;
+    private boolean isVisible;
     private PullLoadMoreRecyclerView mPullLoadMoreRecyclerView;
     private List<String> mDataList = new ArrayList<>();
     private RecyclerViewAdapter mRecyclerViewAdapter;

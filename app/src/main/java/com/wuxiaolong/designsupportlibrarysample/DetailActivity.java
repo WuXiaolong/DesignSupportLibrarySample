@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class DetailActivity extends AppCompatActivity {
-    static String TRANSITION_PIC = "transitionPic";
+    public static String TRANSITION_PIC = "transitionPic";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
