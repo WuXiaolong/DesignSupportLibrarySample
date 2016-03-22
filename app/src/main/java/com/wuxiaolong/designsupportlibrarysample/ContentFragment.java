@@ -89,7 +89,7 @@ public class ContentFragment extends Fragment {
                 mRecyclerViewAdapter.notifyDataSetChanged();
                 mPullLoadMoreRecyclerView.setPullLoadMoreCompleted();
             }
-        }, 3000);
+        }, 2000);
 
     }
 
@@ -105,7 +105,7 @@ public class ContentFragment extends Fragment {
                 mRecyclerViewAdapter.notifyDataSetChanged();
                 mPullLoadMoreRecyclerView.setPullLoadMoreCompleted();
             }
-        }, 3000);
+        }, 2000);
 
 
     }

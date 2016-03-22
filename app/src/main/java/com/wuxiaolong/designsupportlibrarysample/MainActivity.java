@@ -1,5 +1,6 @@
 package com.wuxiaolong.designsupportlibrarysample;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -10,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -174,6 +176,24 @@ public class MainActivity extends BaseActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            //Set the local night mode to some value
+            //怎样获取应用当前的主题?
+            //只需要检测资源配置：
+            int currentNightMode = getResources().getConfiguration().uiMode
+                    & Configuration.UI_MODE_NIGHT_MASK;
+            Log.d("wxl", "currentNightMode=" + currentNightMode);
+            switch (currentNightMode) {
+
+                case Configuration.UI_MODE_NIGHT_NO://使用亮色（light）主题
+                    // Night mode is not active, we're in day time
+                case Configuration.UI_MODE_NIGHT_YES://使用暗色（dark）主题
+                    // Night mode is active, we're at night!
+                case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                    // We don't know what mode we're in, assume notnight
+            }
+//            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//            //调用recreate()使设置生效
+//            recreate();
             return true;
         }
 
