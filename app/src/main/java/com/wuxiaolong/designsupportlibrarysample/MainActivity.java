@@ -1,7 +1,10 @@
 package com.wuxiaolong.designsupportlibrarysample;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -21,7 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by 小尛龙 on 2015/11/16 0016.
+ * Created by 吴小龙同學
+ * on 2015/11/16
+ * api文档：https://developer.android.com/reference/android/support/design/widget/package-summary.html
  */
 
 public class MainActivity extends BaseActivity {
@@ -29,12 +34,14 @@ public class MainActivity extends BaseActivity {
     private Toolbar mToolbar;
     private ActionBarDrawerToggle mDrawerToggle;
     private NavigationView navigationView;
+    private Activity mActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mToolbar = initToolbar();
+        mActivity = this;
         initDrawer();
         initNavigationViewHeader();
         initTabLayout();
@@ -54,7 +61,7 @@ public class MainActivity extends BaseActivity {
             }
         };
         mDrawerToggle.syncState();
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
     }
 
     private void initNavigationViewHeader() {
@@ -74,12 +81,13 @@ public class MainActivity extends BaseActivity {
         public boolean onNavigationItemSelected(MenuItem menuItem) {
             //mToolbar.setTitle(menuItem.getTitle());
             mDrawerLayout.closeDrawers();
-            menuItem.setChecked(true);
+
             switch (menuItem.getItemId()) {
                 case R.id.navigation_item_1:
-
+                    menuItem.setChecked(true);
                     return true;
                 case R.id.navigation_item_2:
+                    menuItem.setChecked(true);
                     return true;
                 default:
 
@@ -173,7 +181,9 @@ public class MainActivity extends BaseActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
+        if (id == R.id.action_bottomsheetdialog) {
+            showBottomSheetDialog();
+        }
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             //Set the local night mode to some value
@@ -198,5 +208,20 @@ public class MainActivity extends BaseActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private BottomSheetDialog mBottomSheetDialog;
+
+    private void showBottomSheetDialog() {
+        View sheetDialogView = getLayoutInflater().inflate(R.layout.sheet_dialog, null);
+        mBottomSheetDialog = new BottomSheetDialog(mActivity);
+        mBottomSheetDialog.setContentView(sheetDialogView);
+        mBottomSheetDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                mBottomSheetDialog = null;
+            }
+        });
+        mBottomSheetDialog.show();
     }
 }

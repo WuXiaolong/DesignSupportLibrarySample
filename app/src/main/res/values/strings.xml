@@ -10,7 +10,7 @@
     <string name="title_activity_app_bar_layout">AppBarLayoutActivity</string>
     <string name="title_activity_base">BaseActivity</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="show_text">请不要在你拿工资的地方玩手机
@@ -113,5 +113,6 @@
     <string name="page1">每日推荐</string>
     <string name="page2">职场指南</string>
     <string name="page3">经典语录</string>
-    <string name="author">小尛龙</string>
+    <string name="author">吴小龙同學</string>
+    <string name="bottomsheetdialog">BottomSheetDialog</string>
 </resources>

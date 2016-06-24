@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="小尛龙"
+        android:text="@string/author"
         android:textColor="@color/white"
         android:textSize="20sp" />
 

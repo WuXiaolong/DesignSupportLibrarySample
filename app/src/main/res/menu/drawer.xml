@@ -3,7 +3,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
+    <!--group 可设置单选效果-->
     <group android:checkableBehavior="single">
 
         <item
@@ -15,7 +15,7 @@
         <item
             android:id="@+id/navigation_item_2"
             android:icon="@drawable/abc_btn_radio_material"
-            android:title="大湿说-搞笑视频" />
+            android:title="AndroidProgrammer" />
 
     </group>
 
