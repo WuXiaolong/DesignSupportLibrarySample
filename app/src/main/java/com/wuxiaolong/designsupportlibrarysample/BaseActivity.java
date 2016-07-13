@@ -1,15 +1,18 @@
 package com.wuxiaolong.designsupportlibrarysample;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 public class BaseActivity extends AppCompatActivity {
+    public Activity mActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
+        mActivity = this;
     }
 
     public Toolbar initToolbar() {

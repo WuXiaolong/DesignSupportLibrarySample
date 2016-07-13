@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:colorBackground"
     android:orientation="vertical">
 
     <LinearLayout
@@ -25,8 +26,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:gravity="center_vertical"
             android:text="吴小龙同學"
-            android:gravity="center_vertical" />
+            android:textColor="?android:attr/textColorPrimary" />
 
     </LinearLayout>
 
@@ -50,10 +52,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:gravity="center_vertical"
             android:text="http://wuxiaolong.me/"
-            android:gravity="center_vertical" />
+            android:textColor="?android:attr/textColorPrimary" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -74,8 +78,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:gravity="center_vertical"
             android:text="公众号：AndroidProgrammer"
-            android:gravity="center_vertical" />
+            android:textColor="?android:attr/textColorPrimary" />
 
     </LinearLayout>
 </LinearLayout>

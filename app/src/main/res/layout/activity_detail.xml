@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:colorBackground"
     android:fitsSystemWindows="true"
     tools:context="com.wuxiaolong.designsupportlibrarysample.DetailActivity">
 
@@ -50,7 +51,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingTop="24dp"
-            android:text="@string/show_text" />
+            android:text="@string/show_text"
+            android:textColor="?android:textColorPrimary" />
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton

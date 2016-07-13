@@ -9,5 +9,5 @@
     <color name="text_second_color_primary">#646464</color>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
-    <color name="cardItemBackgroundColor">@color/white</color>
+    <color name="cardItemBackgroundColor">@color/primary</color>
 </resources>

@@ -2,11 +2,9 @@
 ## 效果预览
 ![](https://github.com/WuXiaolong/DesignSupportLibrarySample/raw/master/screenshots/designsupportlibrarysample.gif)
 
-## 实例App
-![](http://7q5c2h.com1.z0.glb.clouddn.com/dashishuoDownload.png)
-
 ## 相关博客
-[RecyclerView下拉刷新和上拉加载更多以及瀑布流效果](https://github.com/WuXiaolong/PullLoadMoreRecyclerView)
+
+[Android Support Library 之 夜间模式](http://wuxiaolong.me/2016/07/12/appcompatDayNight/)
 
 [Android Design Support Library之NavigationView](http://wuxiaolong.me/2015/11/17/NavigationView/)
 
@@ -17,6 +15,8 @@
 [Android Design Support Library之TabLayout](http://wuxiaolong.me/2015/08/03/TabLayout/)
 
 [RecyclerView+CardView使用](http://wuxiaolong.me/2015/09/15/RecyclerViewCardView/)
+
+[RecyclerView下拉刷新和上拉加载更多以及瀑布流效果](https://github.com/WuXiaolong/PullLoadMoreRecyclerView)
 
 # AndroidProgrammer
 我的微信公众号：Android高手进阶之路，让我们共同学习，每天进步一点点。欢迎微信扫一扫关注。

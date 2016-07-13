@@ -4,6 +4,7 @@ package com.wuxiaolong.designsupportlibrarysample;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,9 @@ public class ContentFragment extends Fragment {
     private List<String> mDataList = new ArrayList<>();
     private RecyclerViewAdapter mRecyclerViewAdapter;
     private String mTitle;
+    private Handler handler;
+    private Runnable runnable;
+    private int i = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,9 +55,11 @@ public class ContentFragment extends Fragment {
         });
     }
 
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
+        //懒加载
         if (getUserVisibleHint()) {
             isVisible = true;
             onVisible();
@@ -79,7 +85,7 @@ public class ContentFragment extends Fragment {
     }
 
     protected void loadMore() {
-        new Handler().postDelayed(new Runnable() {
+        runnable = new Runnable() {
             @Override
             public void run() {
                 for (int j = i; j < i + 20; j++) {
@@ -89,14 +95,15 @@ public class ContentFragment extends Fragment {
                 mRecyclerViewAdapter.notifyDataSetChanged();
                 mPullLoadMoreRecyclerView.setPullLoadMoreCompleted();
             }
-        }, 2000);
+        };
+        handler = new Handler();
+        handler.postDelayed(runnable, 500);
 
     }
 
-    int i = 0;
 
     private void setList() {
-        new Handler().postDelayed(new Runnable() {
+        runnable = new Runnable() {
             @Override
             public void run() {
                 for (i = 0; i < 20; i++) {
@@ -105,8 +112,18 @@ public class ContentFragment extends Fragment {
                 mRecyclerViewAdapter.notifyDataSetChanged();
                 mPullLoadMoreRecyclerView.setPullLoadMoreCompleted();
             }
-        }, 2000);
+        };
+        handler = new Handler();
+        handler.postDelayed(runnable, 500);
 
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d("wxl", "onDestroy");
+        if (handler != null)
+            handler.removeCallbacks(runnable);
     }
 }

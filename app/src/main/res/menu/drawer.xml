@@ -24,12 +24,13 @@
         <menu>
 
             <item
+                android:id="@+id/navigation_item_night"
                 android:icon="@drawable/abc_btn_radio_material"
-                android:title="Android" />
-
+                android:title="夜间模式" />
             <item
+                android:id="@+id/navigation_item_day"
                 android:icon="@drawable/abc_btn_radio_material"
-                android:title="IOS" />
+                android:title="白天模式" />
         </menu>
     </item>
 

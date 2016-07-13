@@ -2,7 +2,8 @@ package com.wuxiaolong.designsupportlibrarysample;
 
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.res.Configuration;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.NavigationView;
@@ -13,12 +14,14 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import com.wuxiaolong.androidutils.library.SharedPreferencesUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +30,8 @@ import java.util.List;
  * Created by 吴小龙同學
  * on 2015/11/16
  * api文档：https://developer.android.com/reference/android/support/design/widget/package-summary.html
+ * 个人博客：http://wuxiaolong.me/
+ * 公众号：AndroidProgrammer
  */
 
 public class MainActivity extends BaseActivity {
@@ -80,8 +85,6 @@ public class MainActivity extends BaseActivity {
         @Override
         public boolean onNavigationItemSelected(MenuItem menuItem) {
             //mToolbar.setTitle(menuItem.getTitle());
-            mDrawerLayout.closeDrawers();
-
             switch (menuItem.getItemId()) {
                 case R.id.navigation_item_1:
                     menuItem.setChecked(true);
@@ -89,8 +92,18 @@ public class MainActivity extends BaseActivity {
                 case R.id.navigation_item_2:
                     menuItem.setChecked(true);
                     return true;
+                case R.id.navigation_item_night:
+                    SharedPreferencesUtil.setBoolean(mActivity, AppConstant.ISNIGHT, true);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    recreate();
+                    return true;
+                case R.id.navigation_item_day:
+                    SharedPreferencesUtil.setBoolean(mActivity, AppConstant.ISNIGHT, false);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    recreate();
+                    return true;
                 default:
-
+                    mDrawerLayout.closeDrawers();
                     return true;
             }
         }
@@ -133,9 +146,12 @@ public class MainActivity extends BaseActivity {
         setupViewPager(viewPager);
         // 设置ViewPager的数据等
         tabLayout.setupWithViewPager(viewPager);
-        //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);//适合很多tab
-        tabLayout.setTabMode(TabLayout.MODE_FIXED);//tab均分,适合少的tab
-        //tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);//tab均分,适合少的tab,TabLayout.GRAVITY_CENTER
+        //适合很多tab
+        //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        //tab均分,适合少的tab
+        tabLayout.setTabMode(TabLayout.MODE_FIXED);
+        //tab均分,适合少的tab,TabLayout.GRAVITY_CENTER
+        //tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
     }
 
@@ -181,33 +197,22 @@ public class MainActivity extends BaseActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_bottomsheetdialog) {
-            showBottomSheetDialog();
-        }
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            //Set the local night mode to some value
-            //怎样获取应用当前的主题?
-            //只需要检测资源配置：
-            int currentNightMode = getResources().getConfiguration().uiMode
-                    & Configuration.UI_MODE_NIGHT_MASK;
-            Log.d("wxl", "currentNightMode=" + currentNightMode);
-            switch (currentNightMode) {
 
-                case Configuration.UI_MODE_NIGHT_NO://使用亮色（light）主题
-                    // Night mode is not active, we're in day time
-                case Configuration.UI_MODE_NIGHT_YES://使用暗色（dark）主题
-                    // Night mode is active, we're at night!
-                case Configuration.UI_MODE_NIGHT_UNDEFINED:
-                    // We don't know what mode we're in, assume notnight
-            }
-//            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-//            //调用recreate()使设置生效
-//            recreate();
-            return true;
+        switch (id) {
+            case R.id.action_bottomsheetdialog:
+                showBottomSheetDialog();
+                break;
+            case R.id.action_about:
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/WuXiaolong/DesignSupportLibrarySample"));
+                mActivity.startActivity(intent);
+                break;
+            default:
+                //对没有处理的事件，交给父类来处理
+                return super.onOptionsItemSelected(item);
+
         }
 
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     private BottomSheetDialog mBottomSheetDialog;
