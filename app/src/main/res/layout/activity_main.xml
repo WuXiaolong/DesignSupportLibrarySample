@@ -28,8 +28,8 @@
                 android:layout_height="wrap_content"
                 app:tabIndicatorColor="@color/white"
                 app:tabSelectedTextColor="@color/white"
-                app:tabTextColor="@color/tab_text_color"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+            <!--app:tabTextColor="@color/tab_text_color"-->
         </android.support.design.widget.AppBarLayout>
 
         <android.support.v4.view.ViewPager
@@ -45,8 +45,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="?android:colorBackground"
-        app:itemTextColor="@color/item_text_color"
         app:menu="@menu/drawer">
 
     </android.support.design.widget.NavigationView>

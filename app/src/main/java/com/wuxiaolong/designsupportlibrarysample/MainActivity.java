@@ -85,6 +85,7 @@ public class MainActivity extends BaseActivity {
         @Override
         public boolean onNavigationItemSelected(MenuItem menuItem) {
             //mToolbar.setTitle(menuItem.getTitle());
+            mDrawerLayout.closeDrawers();
             switch (menuItem.getItemId()) {
                 case R.id.navigation_item_1:
                     menuItem.setChecked(true);
@@ -103,7 +104,6 @@ public class MainActivity extends BaseActivity {
                     recreate();
                     return true;
                 default:
-                    mDrawerLayout.closeDrawers();
                     return true;
             }
         }
