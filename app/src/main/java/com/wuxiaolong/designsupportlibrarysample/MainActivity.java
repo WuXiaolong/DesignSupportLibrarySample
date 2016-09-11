@@ -1,30 +1,24 @@
 package com.wuxiaolong.designsupportlibrarysample;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.wuxiaolong.androidutils.library.SharedPreferencesUtil;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by 吴小龙同學
@@ -36,37 +30,61 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity {
     private DrawerLayout mDrawerLayout;
-    private Toolbar mToolbar;
+    //    private Toolbar mToolbar;
     private ActionBarDrawerToggle mDrawerToggle;
     private NavigationView navigationView;
-    private Activity mActivity;
+    private Fragment currentFragment;
+    private int currentIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mToolbar = initToolbar();
-        mActivity = this;
-        initDrawer();
+//        mToolbar = initToolbar();
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        initDrawer();
         initNavigationViewHeader();
-        initTabLayout();
+//        initTabLayout();
+        initFragment(savedInstanceState);
     }
 
-    private void initDrawer() {
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.open, R.string.close) {
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
+    private void initFragment(Bundle savedInstanceState) {
+        Log.d("wxl", "initFragment=" + savedInstanceState);
+        if (savedInstanceState == null) {
+            currentFragment = new FristFragment();
+            switchContent(currentFragment);
+        } else {
+            //activity销毁后记住销毁前所在页面
+            currentIndex = savedInstanceState.getInt("currentIndex");
+            switch (this.currentIndex) {
+                case 0:
+                    currentFragment = new FristFragment();
+                    switchContent(currentFragment);
+                    break;
+                case 1:
+                    currentFragment = new SecondFragment();
+                    switchContent(currentFragment);
+                    break;
             }
+        }
+    }
 
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-            }
-        };
-        mDrawerToggle.syncState();
-        mDrawerLayout.addDrawerListener(mDrawerToggle);
+    public void initDrawer(Toolbar toolbar) {
+        if (toolbar != null) {
+            mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open, R.string.close) {
+                @Override
+                public void onDrawerOpened(View drawerView) {
+                    super.onDrawerOpened(drawerView);
+                }
+
+                @Override
+                public void onDrawerClosed(View drawerView) {
+                    super.onDrawerClosed(drawerView);
+                }
+            };
+            mDrawerToggle.syncState();
+            mDrawerLayout.addDrawerListener(mDrawerToggle);
+        }
     }
 
     private void initNavigationViewHeader() {
@@ -88,10 +106,16 @@ public class MainActivity extends BaseActivity {
             mDrawerLayout.closeDrawers();
             switch (menuItem.getItemId()) {
                 case R.id.navigation_item_1:
+                    currentIndex = 0;
                     menuItem.setChecked(true);
+                    currentFragment = new FristFragment();
+                    switchContent(currentFragment);
                     return true;
                 case R.id.navigation_item_2:
+                    currentIndex = 1;
                     menuItem.setChecked(true);
+                    currentFragment = new SecondFragment();
+                    switchContent(currentFragment);
                     return true;
                 case R.id.navigation_item_night:
                     SharedPreferencesUtil.setBoolean(mActivity, AppConstant.ISNIGHT, true);
@@ -109,79 +133,17 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
-
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        public void addFrag(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
+    public void switchContent(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.contentLayout, fragment).commit();
+        invalidateOptionsMenu();
     }
 
-    private void initTabLayout() {
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-        viewPager.setOffscreenPageLimit(3);
-        setupViewPager(viewPager);
-        // 设置ViewPager的数据等
-        tabLayout.setupWithViewPager(viewPager);
-        //适合很多tab
-        //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        //tab均分,适合少的tab
-        tabLayout.setTabMode(TabLayout.MODE_FIXED);
-        //tab均分,适合少的tab,TabLayout.GRAVITY_CENTER
-        //tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-    }
-
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        Fragment newfragment = new ContentFragment();
-        Bundle data = new Bundle();
-        data.putInt("id", 0);
-        data.putString("title", getString(R.string.page1));
-        newfragment.setArguments(data);
-        adapter.addFrag(newfragment, getString(R.string.page1));
-
-        newfragment = new ContentFragment();
-        data = new Bundle();
-        data.putInt("id", 1);
-        data.putString("title", getString(R.string.page2));
-        newfragment.setArguments(data);
-        adapter.addFrag(newfragment, getString(R.string.page2));
-
-
-        newfragment = new ContentFragment();
-        data = new Bundle();
-        data.putInt("id", 2);
-        data.putString("title", getString(R.string.page3));
-        newfragment.setArguments(data);
-        adapter.addFrag(newfragment, getString(R.string.page3));
-
-
-        viewPager.setAdapter(adapter);
-
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        Log.d("wxl", "onSaveInstanceState=" + currentIndex);
+        outState.putInt("currentIndex", currentIndex);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
