@@ -15,7 +15,7 @@
         <item
             android:id="@+id/navigation_item_2"
             android:icon="@drawable/abc_btn_radio_material"
-            android:title="AndroidProgrammer" />
+            android:title="关于作者" />
 
     </group>
 

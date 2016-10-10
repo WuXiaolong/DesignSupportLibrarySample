@@ -40,11 +40,8 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        mToolbar = initToolbar();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        initDrawer();
         initNavigationViewHeader();
-//        initTabLayout();
         initFragment(savedInstanceState);
     }
 
@@ -179,7 +176,7 @@ public class MainActivity extends BaseActivity {
 
     private BottomSheetDialog mBottomSheetDialog;
 
-    private void showBottomSheetDialog() {
+    public void showBottomSheetDialog() {
         View sheetDialogView = getLayoutInflater().inflate(R.layout.sheet_dialog, null);
         mBottomSheetDialog = new BottomSheetDialog(mActivity);
         mBottomSheetDialog.setContentView(sheetDialogView);

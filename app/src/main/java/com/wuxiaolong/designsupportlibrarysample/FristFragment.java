@@ -1,6 +1,8 @@
 package com.wuxiaolong.designsupportlibrarysample;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -10,6 +12,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -46,6 +49,22 @@ public class FristFragment extends Fragment {
         mToolbar.setTitle("首页");
         ((MainActivity) getActivity()).initDrawer(mToolbar);
         initTabLayout(view);
+        mToolbar.inflateMenu(R.menu.menu_main);
+        mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_bottomsheetdialog:
+                        ((MainActivity) getActivity()).showBottomSheetDialog();
+                        break;
+                    case R.id.action_about:
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/WuXiaolong/DesignSupportLibrarySample"));
+                        getActivity().startActivity(intent);
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

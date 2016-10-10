@@ -115,4 +115,7 @@
     <string name="page3">经典语录</string>
     <string name="author">吴小龙同學</string>
     <string name="bottomsheetdialog">BottomSheetDialog</string>
+    <string name="blog">个人博客：<u>http://wuxiaolong.me/</u></string>
+    <string name="weixin">微信公众号：<u>吴小龙同学</u></string>
+    <string name="github">github：<u>https://github.com/WuXiaolong/</u></string>
 </resources>

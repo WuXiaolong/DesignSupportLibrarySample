@@ -79,7 +79,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:gravity="center_vertical"
-            android:text="公众号：AndroidProgrammer"
+            android:text="公众号：吴小龙同学"
             android:textColor="?android:attr/textColorPrimary" />
 
     </LinearLayout>

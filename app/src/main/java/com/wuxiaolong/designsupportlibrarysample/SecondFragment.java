@@ -1,6 +1,8 @@
 package com.wuxiaolong.designsupportlibrarysample;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -29,5 +31,28 @@ public class SecondFragment extends Fragment {
         mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
         mToolbar.setTitle("吴小龙");
         ((MainActivity) getActivity()).initDrawer(mToolbar);
+        view.findViewById(R.id.weixin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toWebView("http://weixin.sogou.com/weixin?type=1&query=吴小龙同学");
+            }
+        });
+        view.findViewById(R.id.blog).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toWebView("http://wuxiaolong.me/");
+            }
+        });
+        view.findViewById(R.id.github).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toWebView("https://github.com/WuXiaolong/");
+            }
+        });
+    }
+
+    private void toWebView(String url) {
+        Uri uri = Uri.parse(url);
+        startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
 }
