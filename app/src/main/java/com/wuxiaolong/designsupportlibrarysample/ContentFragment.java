@@ -85,19 +85,7 @@ public class ContentFragment extends Fragment {
     }
 
     protected void loadMore() {
-        runnable = new Runnable() {
-            @Override
-            public void run() {
-                for (int j = i; j < i + 20; j++) {
-                    mDataList.add(mTitle + "\n" + getActivity().getString(R.string.test_data) + j);
-                }
-                i = i + 20;
-                mRecyclerViewAdapter.notifyDataSetChanged();
-                mPullLoadMoreRecyclerView.setPullLoadMoreCompleted();
-            }
-        };
-        handler = new Handler();
-        handler.postDelayed(runnable, 500);
+        setList();
 
     }
 
@@ -107,7 +95,7 @@ public class ContentFragment extends Fragment {
             @Override
             public void run() {
                 for (i = 0; i < 20; i++) {
-                    mDataList.add(mTitle + "\n" + getActivity().getString(R.string.test_data) + i);
+                    mDataList.add(mTitle + "," + getActivity().getString(R.string.test_data) + i);
                 }
                 mRecyclerViewAdapter.notifyDataSetChanged();
                 mPullLoadMoreRecyclerView.setPullLoadMoreCompleted();

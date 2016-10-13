@@ -1,9 +1,13 @@
 package com.wuxiaolong.designsupportlibrarysample;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -18,6 +22,11 @@ public class DetailActivity extends BaseActivity {
         setContentView(R.layout.activity_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+
+        }
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(getString(R.string.detail_title));
@@ -32,6 +41,7 @@ public class DetailActivity extends BaseActivity {
         });
         int position = this.getIntent().getIntExtra("position", 0);
         ImageView backdrop = (ImageView) findViewById(R.id.backdrop);
+        //设置过渡动画
         ViewCompat.setTransitionName(backdrop, DetailActivity.TRANSITION_PIC);
         if (position % 2 == 0) {
             backdrop.setBackgroundResource(R.mipmap.show_img1);
@@ -40,4 +50,11 @@ public class DetailActivity extends BaseActivity {
         }
     }
 
+    public static void startActivity(Activity activity, int position, ImageView showImage) {
+        Intent intent = new Intent();
+        intent.setClass(activity, DetailActivity.class);
+        intent.putExtra("position", position);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, showImage, DetailActivity.TRANSITION_PIC);
+        ActivityCompat.startActivity(activity, intent, options.toBundle());
+    }
 }

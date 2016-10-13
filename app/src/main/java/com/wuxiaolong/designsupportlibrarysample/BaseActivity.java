@@ -15,7 +15,18 @@ public class BaseActivity extends AppCompatActivity {
         mActivity = this;
     }
 
-    public Toolbar initToolbar() {
+    public Toolbar initToolbarAsHome() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(false);
+
+        }
+        return toolbar;
+    }
+
+    public Toolbar initToolbar(String title) {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
