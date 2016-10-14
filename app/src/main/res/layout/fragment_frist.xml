@@ -29,5 +29,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        style="@style/FloatingActionButton"
+        android:layout_gravity="bottom|end"
+        android:src="@android:drawable/ic_dialog_email"/>
 </android.support.design.widget.CoordinatorLayout>
 

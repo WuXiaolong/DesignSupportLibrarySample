@@ -2,8 +2,10 @@ package com.wuxiaolong.designsupportlibrarysample;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 public class BaseActivity extends AppCompatActivity {
     public Activity mActivity;
@@ -37,4 +39,7 @@ public class BaseActivity extends AppCompatActivity {
         return toolbar;
     }
 
+    public void showSnackbar(View view, CharSequence text) {
+        Snackbar.make(view, text, Snackbar.LENGTH_SHORT).show();
+    }
 }

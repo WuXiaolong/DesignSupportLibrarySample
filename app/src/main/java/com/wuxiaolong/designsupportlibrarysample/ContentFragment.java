@@ -4,11 +4,13 @@ package com.wuxiaolong.designsupportlibrarysample;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.wuxiaolong.androidutils.library.LogUtil;
 import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
 
 import java.util.ArrayList;
@@ -22,7 +24,7 @@ public class ContentFragment extends Fragment {
     private String mTitle;
     private Handler handler;
     private Runnable runnable;
-    private int i = 0;
+    private int page = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,6 +45,7 @@ public class ContentFragment extends Fragment {
         mPullLoadMoreRecyclerView.setOnPullLoadMoreListener(new PullLoadMoreRecyclerView.PullLoadMoreListener() {
             @Override
             public void onRefresh() {
+                page = 1;
                 mDataList.clear();
                 setList();
 
@@ -51,6 +54,18 @@ public class ContentFragment extends Fragment {
             @Override
             public void onLoadMore() {
                 loadMore();
+            }
+        });
+//        FristFragment fristFragment=getActivity();
+        mPullLoadMoreRecyclerView.getRecyclerView().addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                LogUtil.d("newState=" + newState);
+            }
+
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                LogUtil.d("dx=" + dx + ",dy=" + dy);
             }
         });
     }
@@ -85,6 +100,7 @@ public class ContentFragment extends Fragment {
     }
 
     protected void loadMore() {
+        page++;
         setList();
 
     }
@@ -94,7 +110,8 @@ public class ContentFragment extends Fragment {
         runnable = new Runnable() {
             @Override
             public void run() {
-                for (i = 0; i < 20; i++) {
+                int start = 20 * (page - 1);
+                for (int i = start ; i < page * 20; i++) {
                     mDataList.add(mTitle + "," + getActivity().getString(R.string.test_data) + i);
                 }
                 mRecyclerViewAdapter.notifyDataSetChanged();
