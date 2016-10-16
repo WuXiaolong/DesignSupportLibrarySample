@@ -1,10 +1,6 @@
 package com.wuxiaolong.designsupportlibrarysample;
 
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -25,7 +21,7 @@ import com.wuxiaolong.androidutils.library.SharedPreferencesUtil;
  * on 2015/11/16
  * api文档：https://developer.android.com/reference/android/support/design/widget/package-summary.html
  * 个人博客：http://wuxiaolong.me/
- * 公众号：AndroidProgrammer
+ * 公众号：吴小龙同学
  */
 
 public class MainActivity extends BaseActivity {
@@ -109,6 +105,12 @@ public class MainActivity extends BaseActivity {
                     switchContent(currentFragment);
                     return true;
                 case R.id.navigation_item_2:
+                    currentIndex = 2;
+                    menuItem.setChecked(true);
+                    currentFragment = new ThirdFragment();
+                    switchContent(currentFragment);
+                    return true;
+                case R.id.navigation_item_3:
                     currentIndex = 1;
                     menuItem.setChecked(true);
                     currentFragment = new SecondFragment();
@@ -158,12 +160,7 @@ public class MainActivity extends BaseActivity {
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.action_bottomsheetdialog:
-                showBottomSheetDialog();
-                break;
             case R.id.action_about:
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/WuXiaolong/DesignSupportLibrarySample"));
-                mActivity.startActivity(intent);
                 break;
             default:
                 //对没有处理的事件，交给父类来处理
@@ -174,18 +171,5 @@ public class MainActivity extends BaseActivity {
         return true;
     }
 
-    private BottomSheetDialog mBottomSheetDialog;
 
-    public void showBottomSheetDialog() {
-        View sheetDialogView = getLayoutInflater().inflate(R.layout.sheet_dialog, null);
-        mBottomSheetDialog = new BottomSheetDialog(mActivity);
-        mBottomSheetDialog.setContentView(sheetDialogView);
-        mBottomSheetDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                mBottomSheetDialog = null;
-            }
-        });
-        mBottomSheetDialog.show();
-    }
 }

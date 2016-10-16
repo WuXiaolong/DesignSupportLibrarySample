@@ -1,0 +1,63 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/thirdLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.wuxiaolong.designsupportlibrarysample.ThirdFragment">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <TextView
+        android:id="@+id/snackbars"
+        style="@style/CommonText"
+        android:layout_height="45dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="Snackbars"/>
+
+
+    <View
+        style="@style/DividerHorizontal"/>
+
+    <TextView
+        android:id="@+id/bottomSheetDialog"
+        style="@style/CommonText"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="BottomSheetDialog"/>
+
+    <View
+        style="@style/DividerHorizontal"/>
+
+    <LinearLayout
+        android:id="@+id/switchCompatLayout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="?android:attr/selectableItemBackground">
+
+        <TextView
+            style="@style/CommonText"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="SwitchCompat"/>
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/switchCompat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <View
+        style="@style/DividerHorizontal"/>
+</LinearLayout>

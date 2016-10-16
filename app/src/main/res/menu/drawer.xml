@@ -10,10 +10,14 @@
             android:id="@+id/navigation_item_1"
             android:checked="true"
             android:icon="@drawable/abc_btn_radio_material"
-            android:title="微言-晨读励志" />
+            android:title="首页" />
 
         <item
             android:id="@+id/navigation_item_2"
+            android:icon="@drawable/abc_btn_radio_material"
+            android:title="其他组件" />
+        <item
+            android:id="@+id/navigation_item_3"
             android:icon="@drawable/abc_btn_radio_material"
             android:title="关于作者" />
 

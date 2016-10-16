@@ -56,14 +56,11 @@ public class FristFragment extends Fragment {
         mToolbar.setTitle("首页");
         ((MainActivity) getActivity()).initDrawer(mToolbar);
         initTabLayout(view);
-        mToolbar.inflateMenu(R.menu.menu_main);
+        mToolbar.inflateMenu(R.menu.menu_frist);
         mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.action_bottomsheetdialog:
-                        ((MainActivity) getActivity()).showBottomSheetDialog();
-                        break;
                     case R.id.action_about:
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/WuXiaolong/DesignSupportLibrarySample"));
                         getActivity().startActivity(intent);
