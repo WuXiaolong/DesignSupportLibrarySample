@@ -128,7 +128,7 @@ ViewCompat.setTransitionName(backdrop, AppConstants.TRANSITION_PIC);
 使用方法：见[源码](https://github.com/WuXiaolong/DesignSupportLibrarySample)
 
 # 源码地址
-[https://github.com/WuXiaolong/DesignSupportLibrarySample](https://github.com/WuXiaolong/DesignSupportLibrarySample)，Material design规范文档内容很多，很多东西是要细致推敲，值得产品经理或UI设计师，乃至开发人员好好学习，目前这个sample，Material design风格的效果都有了，相当一个空壳子，你只需塞数据就是一个perfect app，个人能力和精力有限，只能分享这么多了，over。
+[https://github.com/WuXiaolong/DesignSupportLibrarySample](https://github.com/WuXiaolong/DesignSupportLibrarySample)，Material design规范文档内容很多，很多东西是要细致推敲，值得产品经理或UI设计师，乃至开发人员好好学习，目前这个sample，Material design风格的效果都有了，相当一个空壳子，您只需在实际开发中塞真实数据就是一个perfect app，个人能力和精力有限，只能分享这么多了，over。
 
 # 更新日志
 * 2016/10/17 修改
