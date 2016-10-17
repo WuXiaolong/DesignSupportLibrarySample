@@ -4,18 +4,22 @@ package com.wuxiaolong.designsupportlibrarysample;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.wuxiaolong.androidutils.library.LogUtil;
 import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by 吴小龙同學
+ * on 2016/9/11.
+ * 官网文档：https://material.google.com/
+ * 个人博客：http://wuxiaolong.me/
+ * 公众号：吴小龙同学
+ */
 public class ContentFragment extends Fragment {
     private boolean isVisible;
     private PullLoadMoreRecyclerView mPullLoadMoreRecyclerView;
@@ -54,18 +58,6 @@ public class ContentFragment extends Fragment {
             @Override
             public void onLoadMore() {
                 loadMore();
-            }
-        });
-//        FristFragment fristFragment=getActivity();
-        mPullLoadMoreRecyclerView.getRecyclerView().addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                LogUtil.d("newState=" + newState);
-            }
-
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                LogUtil.d("dx=" + dx + ",dy=" + dy);
             }
         });
     }
@@ -111,7 +103,7 @@ public class ContentFragment extends Fragment {
             @Override
             public void run() {
                 int start = 20 * (page - 1);
-                for (int i = start ; i < page * 20; i++) {
+                for (int i = start; i < page * 20; i++) {
                     mDataList.add(mTitle + "," + getActivity().getString(R.string.test_data) + i);
                 }
                 mRecyclerViewAdapter.notifyDataSetChanged();
@@ -127,7 +119,6 @@ public class ContentFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d("wxl", "onDestroy");
         if (handler != null)
             handler.removeCallbacks(runnable);
     }

@@ -8,25 +8,24 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.wuxiaolong.androidutils.library.LogUtil;
 import com.wuxiaolong.androidutils.library.SharedPreferencesUtil;
 
 /**
  * Created by 吴小龙同學
  * on 2015/11/16
- * api文档：https://developer.android.com/reference/android/support/design/widget/package-summary.html
+ * 官网文档：https://material.google.com/
  * 个人博客：http://wuxiaolong.me/
  * 公众号：吴小龙同学
  */
 
 public class MainActivity extends BaseActivity {
     private DrawerLayout mDrawerLayout;
-    //    private Toolbar mToolbar;
     private ActionBarDrawerToggle mDrawerToggle;
     private NavigationView navigationView;
     private Fragment currentFragment;
@@ -42,13 +41,12 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initFragment(Bundle savedInstanceState) {
-        Log.d("wxl", "initFragment=" + savedInstanceState);
         if (savedInstanceState == null) {
             currentFragment = new FristFragment();
             switchContent(currentFragment);
         } else {
-            //activity销毁后记住销毁前所在页面
-            currentIndex = savedInstanceState.getInt("currentIndex");
+            //activity销毁后记住销毁前所在页面，用于夜间模式切换
+            currentIndex = savedInstanceState.getInt(AppConstants.CURRENT_INDEX);
             switch (this.currentIndex) {
                 case 0:
                     currentFragment = new FristFragment();
@@ -56,6 +54,10 @@ public class MainActivity extends BaseActivity {
                     break;
                 case 1:
                     currentFragment = new SecondFragment();
+                    switchContent(currentFragment);
+                    break;
+                case 2:
+                    currentFragment = new ThirdFragment();
                     switchContent(currentFragment);
                     break;
             }
@@ -95,7 +97,6 @@ public class MainActivity extends BaseActivity {
     class NavigationItemSelected implements NavigationView.OnNavigationItemSelectedListener {
         @Override
         public boolean onNavigationItemSelected(MenuItem menuItem) {
-            //mToolbar.setTitle(menuItem.getTitle());
             mDrawerLayout.closeDrawers();
             switch (menuItem.getItemId()) {
                 case R.id.navigation_item_1:
@@ -117,12 +118,12 @@ public class MainActivity extends BaseActivity {
                     switchContent(currentFragment);
                     return true;
                 case R.id.navigation_item_night:
-                    SharedPreferencesUtil.setBoolean(mActivity, AppConstant.ISNIGHT, true);
+                    SharedPreferencesUtil.setBoolean(mActivity, AppConstants.ISNIGHT, true);
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                     recreate();
                     return true;
                 case R.id.navigation_item_day:
-                    SharedPreferencesUtil.setBoolean(mActivity, AppConstant.ISNIGHT, false);
+                    SharedPreferencesUtil.setBoolean(mActivity, AppConstants.ISNIGHT, false);
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                     recreate();
                     return true;
@@ -140,8 +141,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        Log.d("wxl", "onSaveInstanceState=" + currentIndex);
-        outState.putInt("currentIndex", currentIndex);
+        LogUtil.d("onSaveInstanceState=" + currentIndex);
+        outState.putInt(AppConstants.CURRENT_INDEX, currentIndex);
         super.onSaveInstanceState(outState);
     }
 

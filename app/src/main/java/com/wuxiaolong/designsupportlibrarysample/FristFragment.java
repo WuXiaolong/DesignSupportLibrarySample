@@ -11,7 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -26,18 +26,15 @@ import java.util.List;
 /**
  * Created by 吴小龙同學
  * on 2016/9/11.
+ * 官网文档：https://material.google.com/
+ * 个人博客：http://wuxiaolong.me/
+ * 公众号：吴小龙同学
  */
 
-public class FristFragment extends Fragment {
+public class FristFragment extends BaseFragment {
     private Toolbar mToolbar;
     private FloatingActionButton fab;
 
-    public static FristFragment newInstance() {
-
-        Bundle args = new Bundle();
-        FristFragment fragment = new FristFragment();
-        return fragment;
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,17 +48,46 @@ public class FristFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
-//        fab.hide(null);
         mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
         mToolbar.setTitle("首页");
         ((MainActivity) getActivity()).initDrawer(mToolbar);
         initTabLayout(view);
+        inflateMenu();
+        initSearchView();
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mActivity, LoginActivity.class));
+            }
+        });
+    }
+
+    private void initSearchView() {
+        final SearchView searchView = (SearchView) mToolbar.getMenu().findItem(R.id.menu_search).getActionView();
+        searchView.setQueryHint("搜索…");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                showToast("query=" + query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                LogUtil.d("onQueryTextChange=" + s);
+                // UserFeedback.show( "SearchOnQueryTextChanged: " + s);
+                return false;
+            }
+        });
+    }
+
+    private void inflateMenu() {
         mToolbar.inflateMenu(R.menu.menu_frist);
         mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.action_about:
+                    case R.id.menu_about:
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/WuXiaolong/DesignSupportLibrarySample"));
                         getActivity().startActivity(intent);
                         break;
@@ -71,17 +97,6 @@ public class FristFragment extends Fragment {
         });
     }
 
-    public void fabShowHide(RecyclerView recyclerView) {
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                LogUtil.d("newState=" + newState);
-            }
-        });
-
-
-    }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
@@ -115,8 +130,8 @@ public class FristFragment extends Fragment {
     private void initTabLayout(View view) {
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabs);
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewPager);
-        viewPager.setOffscreenPageLimit(3);
         setupViewPager(viewPager);
+        viewPager.setOffscreenPageLimit(viewPager.getAdapter().getCount());
         // 设置ViewPager的数据等
         tabLayout.setupWithViewPager(viewPager);
         //适合很多tab

@@ -13,8 +13,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 
+/**
+ * Created by 吴小龙同學
+ * on 2015/11/16
+ * 官网文档：https://material.google.com/
+ * 个人博客：http://wuxiaolong.me/
+ * 公众号：吴小龙同学
+ */
 public class DetailActivity extends BaseActivity {
-    public static String TRANSITION_PIC = "transitionPic";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +48,7 @@ public class DetailActivity extends BaseActivity {
         int position = this.getIntent().getIntExtra("position", 0);
         ImageView backdrop = (ImageView) findViewById(R.id.backdrop);
         //设置过渡动画
-        ViewCompat.setTransitionName(backdrop, DetailActivity.TRANSITION_PIC);
+        ViewCompat.setTransitionName(backdrop, AppConstants.TRANSITION_PIC);
         if (position % 2 == 0) {
             backdrop.setBackgroundResource(R.mipmap.show_img1);
         } else {
@@ -54,7 +60,7 @@ public class DetailActivity extends BaseActivity {
         Intent intent = new Intent();
         intent.setClass(activity, DetailActivity.class);
         intent.putExtra("position", position);
-        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, showImage, DetailActivity.TRANSITION_PIC);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, showImage, AppConstants.TRANSITION_PIC);
         ActivityCompat.startActivity(activity, intent, options.toBundle());
     }
 }

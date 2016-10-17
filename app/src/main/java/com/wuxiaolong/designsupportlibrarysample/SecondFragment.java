@@ -12,11 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Created by 吴小龙同學
+ * on 2015/11/16
+ * 官网文档：https://material.google.com/
+ * 个人博客：http://wuxiaolong.me/
+ * 公众号：吴小龙同学
  */
 public class SecondFragment extends Fragment {
     private Toolbar mToolbar;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

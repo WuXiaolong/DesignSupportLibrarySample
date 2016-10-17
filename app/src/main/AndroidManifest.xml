@@ -2,9 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.wuxiaolong.designsupportlibrarysample">
 
-
     <application
-        android:name=".SampleApplication"
+        android:name=".AndroidApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -28,15 +27,8 @@
             android:label="@string/title_activity_detail"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".BottomSheetDialogActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".DayNightActivity"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name=".LoginActivity"
             android:screenOrientation="portrait">
-
         </activity>
     </application>
 

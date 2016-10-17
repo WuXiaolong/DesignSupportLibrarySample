@@ -8,13 +8,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+/**
+ * Created by 吴小龙同學
+ * on 2015/11/16
+ * 官网文档：https://material.google.com/
+ * 个人博客：http://wuxiaolong.me/
+ * 公众号：吴小龙同学
+ */
 public class BaseActivity extends AppCompatActivity {
     public Activity mActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base);
         mActivity = this;
     }
 
@@ -31,6 +37,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public Toolbar initToolbar(String title) {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(title);
         setSupportActionBar(toolbar);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

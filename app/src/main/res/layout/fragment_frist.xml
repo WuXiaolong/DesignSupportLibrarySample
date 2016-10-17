@@ -1,6 +1,7 @@
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fristLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -19,9 +20,9 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabIndicatorColor="@color/white"
-            app:tabSelectedTextColor="@color/white"/>
-        <!--app:tabTextColor="@color/tab_text_color"-->
+            app:tabIndicatorColor="@color/white"/>
+        <!--app:tabTextColor="@color/tab_text_color"
+        app:tabSelectedTextColor="@color/white"-->
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
@@ -34,6 +35,6 @@
         android:id="@+id/fab"
         style="@style/FloatingActionButton"
         android:layout_gravity="bottom|end"
-        android:src="@android:drawable/ic_dialog_email"/>
+        android:src="@android:drawable/ic_dialog_dialer"/>
 </android.support.design.widget.CoordinatorLayout>
 

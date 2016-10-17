@@ -2,6 +2,7 @@ package com.wuxiaolong.designsupportlibrarysample;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -16,21 +17,29 @@ import com.wuxiaolong.androidutils.library.LogUtil;
 
 
 /**
- * 登录
+ * Created by 吴小龙同學
+ * on 2015/11/16
+ * 官网文档：https://material.google.com/
+ * 个人博客：http://wuxiaolong.me/
+ * 公众号：吴小龙同学
  */
 public class LoginActivity extends BaseActivity {
 
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View loginView;
+    TextInputLayout emailTextInput, passwordTextInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        initToolbar("登录");
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         mPasswordView = (EditText) findViewById(R.id.password);
         loginView = findViewById(R.id.loginView);
+        emailTextInput = (TextInputLayout) findViewById(R.id.emailTextInput);
+        passwordTextInput = (TextInputLayout) findViewById(R.id.passwordTextInput);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -56,28 +65,24 @@ public class LoginActivity extends BaseActivity {
     private void attemptLogin() {
         LogUtil.d("attemptLogin");
         // Reset errors.
-        mEmailView.setError(null);
-        mPasswordView.setError(null);
+        emailTextInput.setErrorEnabled(false);
+        passwordTextInput.setErrorEnabled(false);
 
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
         if (TextUtils.isEmpty(email)) {
-            mEmailView.setError("请输入邮箱");
-            showSnackbar(loginView, "请输入邮箱");
+            emailTextInput.setError("请输入邮箱");
             return;
         } else if (!isEmailValid(email)) {
-            mEmailView.setError("请输入有效的邮箱");
-            showSnackbar(loginView, "请输入有效的邮箱");
+            emailTextInput.setError("请输入有效的邮箱");
             return;
         }
 
         if (TextUtils.isEmpty(password)) {
-            mPasswordView.setError("请输入密码");
-            showSnackbar(loginView, "请输入密码");
+            passwordTextInput.setError("请输入密码");
             return;
         } else if (!isPasswordValid(password)) {
-            mPasswordView.setError("密码过短");
-            showSnackbar(loginView, "密码过短");
+            passwordTextInput.setError("密码过短");
             return;
         }
 

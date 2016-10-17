@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <color name="primary">#03A9F4</color>
-    <color name="primary_dark">#039BE5</color>
-    <color name="accent">#03A9F4</color>
-    <color name="tab_text_color">#81D4FA</color>
-    <color name="text_color_primary">#212121</color>
-    <color name="text_second_color_primary">#646464</color>
-    <color name="black">#000000</color>
-    <color name="white">#ffffff</color>
-    <color name="cardItemBackgroundColor">@color/primary</color>
+    <color name="primary">#212121</color>
+    <color name="primary_dark">@color/primary</color>
+    <color name="accent">@color/primary</color>
 </resources>
