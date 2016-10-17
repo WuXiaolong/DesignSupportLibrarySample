@@ -1,25 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
     android:background="?attr/colorPrimary"
-    android:gravity="center"
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="10dp"
-        android:background="@mipmap/ic_launcher" />
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="40dp"
+        android:background="@mipmap/ic_launcher"/>
 
-    <TextView
-        android:id="@+id/userName"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="@string/author"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:layout_height="56dp"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/userName"
+            style="@style/CommonText"
+            android:text="@string/author"
+            android:textColor="?android:attr/textColorPrimaryInverse"
+            android:textSize="@dimen/body"/>
+
+        <TextView
+            style="@style/CommonText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/blog"
+            android:textColor="?android:attr/textColorSecondaryInverse"
+            android:textSize="@dimen/body"/>
+    </LinearLayout>
 </LinearLayout>

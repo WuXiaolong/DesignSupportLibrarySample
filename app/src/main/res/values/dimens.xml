@@ -4,12 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="card_view_margin_bottom">0dp</dimen>
-    <dimen name="text_super_small">12sp</dimen>
-    <dimen name="text_small">14sp</dimen>
-    <dimen name="text_middle">16sp</dimen>
-    <dimen name="text_large">18sp</dimen>
-    <dimen name="text_super_large">21sp</dimen>
-    <dimen name="text_super_large_x2">42sp</dimen>
+
     <dimen name="button">14sp</dimen>
     <!--给（图片、照片等）加说明文字-->
     <dimen name="caption">12sp</dimen>
