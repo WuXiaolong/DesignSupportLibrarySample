@@ -1,10 +1,5 @@
-title: Android Design Support Library使用
-date: 2015-11-06 13:08:01
-tags: DesignSupportLibrary
-category: SupportLibrary
----
 
-作为Android开发者，谷歌的Material design规范文档读过吗？
+作为Android开发者，谷歌的Material design规范文档有读过吗？
 谷歌出Material design规范很久了，但是市面上的Material design风格的APP却很少（Android的杯具），这个规范应该产品经理或UI设计师应该熟知于心，官网地址：[https://material.google.com/](https://material.google.com/)，这里分享开发可能会使用的知识点和注意点，有详细sample哦。
 
 <!--more-->
