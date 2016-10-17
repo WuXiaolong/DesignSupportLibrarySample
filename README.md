@@ -119,6 +119,7 @@ ViewCompat.setTransitionName(backdrop, AppConstants.TRANSITION_PIC);
 
 ## 夜间模式
 ![](http://7q5c2h.com1.z0.glb.clouddn.com/DesignSupportLibrary9.jpg?watermark/2/text/5ZC05bCP6b6Z5ZCM5a24/font/5qW35L2T/fontsize/500/fill/I0VGRUZFRg==/dissolve/100/gravity/SouthEast/dx/10/dy/10)
+
 使用方法：[Android Support Library 之 夜间模式](http://wuxiaolong.me/2016/07/12/appcompatDayNight/)
 
 ## 其他组件
