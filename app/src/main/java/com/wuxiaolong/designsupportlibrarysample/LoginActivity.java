@@ -27,8 +27,7 @@ public class LoginActivity extends BaseActivity {
 
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
-    private View loginView;
-    TextInputLayout emailTextInput, passwordTextInput;
+    private TextInputLayout emailTextInput, passwordTextInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +36,6 @@ public class LoginActivity extends BaseActivity {
         initToolbar("登录");
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         mPasswordView = (EditText) findViewById(R.id.password);
-        loginView = findViewById(R.id.loginView);
         emailTextInput = (TextInputLayout) findViewById(R.id.emailTextInput);
         passwordTextInput = (TextInputLayout) findViewById(R.id.passwordTextInput);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {

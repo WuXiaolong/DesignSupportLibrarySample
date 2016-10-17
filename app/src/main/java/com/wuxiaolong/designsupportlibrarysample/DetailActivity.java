@@ -56,11 +56,15 @@ public class DetailActivity extends BaseActivity {
         }
     }
 
+    /**
+     * @param showImage 共享的元素
+     */
     public static void startActivity(Activity activity, int position, ImageView showImage) {
         Intent intent = new Intent();
         intent.setClass(activity, DetailActivity.class);
         intent.putExtra("position", position);
-        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, showImage, AppConstants.TRANSITION_PIC);
+        ActivityOptionsCompat options = ActivityOptionsCompat
+                .makeSceneTransitionAnimation(activity, showImage, AppConstants.TRANSITION_PIC);
         ActivityCompat.startActivity(activity, intent, options.toBundle());
     }
 }

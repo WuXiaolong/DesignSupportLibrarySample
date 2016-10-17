@@ -63,7 +63,8 @@ public class FristFragment extends BaseFragment {
     }
 
     private void initSearchView() {
-        final SearchView searchView = (SearchView) mToolbar.getMenu().findItem(R.id.menu_search).getActionView();
+        final SearchView searchView = (SearchView) mToolbar.getMenu()
+                .findItem(R.id.menu_search).getActionView();
         searchView.setQueryHint("搜索…");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

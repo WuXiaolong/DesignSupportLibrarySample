@@ -22,13 +22,13 @@
 
         <TextView
             android:id="@+id/userName"
-            style="@style/CommonText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/author"
             android:textColor="?android:attr/textColorPrimaryInverse"
             android:textSize="@dimen/body"/>
 
         <TextView
-            style="@style/CommonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/blog"
