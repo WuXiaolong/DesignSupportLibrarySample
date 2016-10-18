@@ -50,6 +50,8 @@ public class FristFragment extends BaseFragment {
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
         mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
         mToolbar.setTitle("首页");
+        //TextView toolbarTitle = (TextView) mToolbar.findViewById(R.id.toolbar_title);
+        //toolbarTitle.setText("首页");
         ((MainActivity) getActivity()).initDrawer(mToolbar);
         initTabLayout(view);
         inflateMenu();
