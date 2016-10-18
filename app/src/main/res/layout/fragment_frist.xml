@@ -43,6 +43,6 @@
         android:id="@+id/fab"
         style="@style/FloatingActionButton"
         android:layout_gravity="bottom|end"
-        android:src="@android:drawable/ic_dialog_dialer"/>
+        app:srcCompat="@drawable/ic_mode_edit_white_24dp"/>
 </android.support.design.widget.CoordinatorLayout>
 
