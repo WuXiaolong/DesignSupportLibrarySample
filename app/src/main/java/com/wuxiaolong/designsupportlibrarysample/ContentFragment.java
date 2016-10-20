@@ -21,6 +21,9 @@ import java.util.List;
  * 公众号：吴小龙同学
  */
 public class ContentFragment extends Fragment {
+    // 标志位，标志已经初始化完成，因为setUserVisibleHint是在onCreateView之前调用的，在视图未初始化的时候，在lazyLoad当中就使用的话，就会有空指针的异常
+    private boolean isPrepared;
+    //标志当前页面是否可见
     private boolean isVisible;
     private PullLoadMoreRecyclerView mPullLoadMoreRecyclerView;
     private List<String> mDataList = new ArrayList<>();
@@ -60,6 +63,8 @@ public class ContentFragment extends Fragment {
                 loadMore();
             }
         });
+        isPrepared = true;
+        lazyLoad();
     }
 
 
@@ -82,7 +87,7 @@ public class ContentFragment extends Fragment {
     }
 
     protected void lazyLoad() {
-        if (!isVisible) {
+        if (!isVisible || !isPrepared) {
             return;
         }
         setList();
