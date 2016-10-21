@@ -2,6 +2,7 @@ package com.wuxiaolong.designsupportlibrarysample;
 
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialog;
@@ -49,6 +50,12 @@ public class ThirdFragment extends BaseFragment {
         checkBox = (CheckBox) view.findViewById(R.id.checkbox);
         radiobutton = (RadioButton) view.findViewById(R.id.radiobutton);
         seekBar = (SeekBar) view.findViewById(R.id.seekBar);
+        view.findViewById(R.id.bottomNavigation).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mActivity, BottomNavigationActivity.class));
+            }
+        });
         view.findViewById(R.id.snackbars).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

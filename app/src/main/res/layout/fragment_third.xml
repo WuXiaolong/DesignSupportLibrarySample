@@ -16,6 +16,18 @@
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <TextView
+        android:id="@+id/bottomNavigation"
+        style="@style/CommonText"
+        android:layout_height="45dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="Bottom navigation"/>
+
+
+    <View
+        style="@style/DividerHorizontal"/>
+    <TextView
         android:id="@+id/snackbars"
         style="@style/CommonText"
         android:layout_height="45dp"
