@@ -6,6 +6,7 @@
     android:id="@+id/activity_bottom_navigation"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:colorBackground"
     android:orientation="vertical"
     tools:context="com.wuxiaolong.designsupportlibrarysample.BottomNavigationActivity">
 
