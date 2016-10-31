@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
-
+def supportVersion = "25.0.0"
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    buildToolsVersion supportVersion
 
     defaultConfig {
-        applicationId "com.example.wuxiaolongl.designsupportlibrarysample"
-        minSdkVersion 14
+        applicationId "com.wuxiaolong.designsupportlibrarysample"
+        minSdkVersion 14//如果想看App Shortcuts效果，这里写25
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -19,7 +19,7 @@ android {
         }
     }
 }
-def supportVersion = "25.0.0"
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:' + supportVersion
@@ -27,6 +27,6 @@ dependencies {
     compile 'com.android.support:design:' + supportVersion
     compile 'com.android.support:recyclerview-v7:' + supportVersion
     compile 'com.android.support:cardview-v7:' + supportVersion
-    compile 'com.wuxiaolong.pullloadmorerecyclerview:library:1.0.8'
-    compile 'com.wuxiaolong.androidutils:androidutils:1.0.3'
+    compile 'com.wuxiaolong.pullloadmorerecyclerview:library:1.1.1'
+    compile 'com.wuxiaolong.androidutils:androidutils:1.0.6'
 }

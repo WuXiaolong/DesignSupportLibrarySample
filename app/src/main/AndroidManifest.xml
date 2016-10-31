@@ -17,6 +17,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+            <!--App Shortcuts-->
+            <!--<meta-data-->
+                <!--android:name="android.app.shortcuts"-->
+                <!--android:resource="@xml/shortcuts"/>-->
         </activity>
         <activity
             android:name=".BaseActivity"
@@ -31,6 +35,8 @@
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".BottomNavigationActivity">
+        </activity>
+        <activity android:name=".AppShortcutsActivity">
         </activity>
     </application>
 

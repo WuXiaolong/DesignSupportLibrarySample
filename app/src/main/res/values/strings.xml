@@ -129,7 +129,10 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">请输入账号</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."    </string>
+    <string name="shortcut_disabled_message1">shortcut_disabled_message1</string>
+    <string name="shortcut_long_label1">shortcut_long_label1</string>
+    <string name="shortcut_short_label1">shortcut_short_label1</string>
+    <string name="shortcut_short_label2">shortcut_short_label2</string>
+    <string name="shortcut_long_label2">shortcut_long_label2</string>
 </resources>

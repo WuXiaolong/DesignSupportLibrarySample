@@ -1,0 +1,27 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_content_copy_24dp"
+        android:shortcutDisabledMessage="@string/shortcut_disabled_message1"
+        android:shortcutId="shortcutId1"
+        android:shortcutLongLabel="@string/shortcut_long_label1"
+        android:shortcutShortLabel="@string/shortcut_short_label1">
+        <intent
+            android:action="action1"
+            android:targetClass="com.wuxiaolong.designsupportlibrarysample.AppShortcutsActivity"
+            android:targetPackage="com.wuxiaolong.designsupportlibrarysample"/>
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_share_24dp"
+        android:shortcutDisabledMessage="@string/shortcut_disabled_message1"
+        android:shortcutId="shortcutId2"
+        android:shortcutLongLabel="@string/shortcut_long_label2"
+        android:shortcutShortLabel="@string/shortcut_short_label2">
+        <intent
+            android:action="action2"
+            android:targetClass="com.wuxiaolong.designsupportlibrarysample.BottomNavigationActivity"
+            android:targetPackage="com.wuxiaolong.designsupportlibrarysample"/>
+    </shortcut>
+
+</shortcuts>
