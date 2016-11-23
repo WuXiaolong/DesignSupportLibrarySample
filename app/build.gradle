@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 def supportVersion = "25.0.0"
 android {
-    compileSdkVersion 25
+    compileSdkVersion 25 //如果想看App Shortcuts效果，这里写25
     buildToolsVersion supportVersion
 
     defaultConfig {
         applicationId "com.wuxiaolong.designsupportlibrarysample"
-        minSdkVersion 14//如果想看App Shortcuts效果，这里写25
+        minSdkVersion 14 //如果想看App Shortcuts效果，这里写25
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
