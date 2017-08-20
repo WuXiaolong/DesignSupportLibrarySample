@@ -9,7 +9,7 @@
         <item
             android:id="@+id/navigation_item_1"
             android:checked="true"
-            android:icon="@drawable/abc_btn_radio_material"
+            android:icon="@drawable/ic_content_copy_24dp"
             android:title="首页" />
 
         <item

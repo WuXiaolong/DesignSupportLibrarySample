@@ -103,7 +103,7 @@ public class FristFragment extends BaseFragment {
     }
 
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
+    private class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
@@ -133,7 +133,7 @@ public class FristFragment extends BaseFragment {
     }
 
     private void initTabLayout(View view) {
-        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabs);
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabLayout);
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewPager);
         setupViewPager(viewPager);
         viewPager.setOffscreenPageLimit(viewPager.getAdapter().getCount());

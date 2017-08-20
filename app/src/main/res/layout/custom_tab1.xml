@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="72dp"
+    android:layout_height="72dp"
+    android:minWidth="56dp">
+
+    <ImageView
+        android:id="@+id/tabIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custom_tab_icon"
+        android:scaleType="centerInside" />
+
+    <TextView
+        android:id="@+id/tabText"
+        style="@style/TextAppearance.Design.Tab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tabIcon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/custom_tab_text" />
+
+    <TextView
+        android:id="@+id/tabPoint"
+        android:layout_width="20dp"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_height="20dp"
+        android:background="@drawable/tab_point_bg"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/tab_point_text" />
+
+</RelativeLayout>

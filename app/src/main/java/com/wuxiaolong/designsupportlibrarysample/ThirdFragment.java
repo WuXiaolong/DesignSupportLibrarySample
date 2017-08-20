@@ -50,6 +50,12 @@ public class ThirdFragment extends BaseFragment {
         checkBox = (CheckBox) view.findViewById(R.id.checkbox);
         radiobutton = (RadioButton) view.findViewById(R.id.radiobutton);
         seekBar = (SeekBar) view.findViewById(R.id.seekBar);
+        view.findViewById(R.id.tabLayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mActivity, TabLayoutActivity.class));
+            }
+        });
         view.findViewById(R.id.bottomNavigation).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

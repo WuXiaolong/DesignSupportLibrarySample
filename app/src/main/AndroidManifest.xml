@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.wuxiaolong.designsupportlibrarysample">
+    package="com.wuxiaolong.designsupportlibrarysample">
 
     <application
         android:name=".AndroidApplication"
@@ -13,31 +13,29 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!--App Shortcuts-->
-            <!--<meta-data-->
-                <!--android:name="android.app.shortcuts"-->
-                <!--android:resource="@xml/shortcuts"/>-->
+            <!-- App Shortcuts -->
+            <!-- <meta-data -->
+            <!-- android:name="android.app.shortcuts" -->
+            <!-- android:resource="@xml/shortcuts"/> -->
         </activity>
         <activity
             android:name=".BaseActivity"
             android:label="@string/title_activity_base"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".DetailActivity"
             android:label="@string/title_activity_detail"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LoginActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".BottomNavigationActivity">
-        </activity>
-        <activity android:name=".AppShortcutsActivity">
-        </activity>
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".BottomNavigationActivity"></activity>
+        <activity android:name=".AppShortcutsActivity"></activity>
+        <activity android:name=".TabLayoutActivity"></activity>
     </application>
 
 </manifest>

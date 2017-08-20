@@ -3,4 +3,5 @@
     <color name="primary">#212121</color>
     <color name="primary_dark">@color/primary</color>
     <color name="accent">@color/primary</color>
+    <color name="tab_point_text">#000</color>
 </resources>
