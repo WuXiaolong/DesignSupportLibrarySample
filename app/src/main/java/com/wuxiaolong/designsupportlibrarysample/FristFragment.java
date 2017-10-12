@@ -103,11 +103,11 @@ public class FristFragment extends BaseFragment {
     }
 
 
-    private class ViewPagerAdapter extends FragmentPagerAdapter {
+    private class FragmentViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager) {
+        public FragmentViewPagerAdapter(FragmentManager manager) {
             super(manager);
         }
 
@@ -149,7 +149,7 @@ public class FristFragment extends BaseFragment {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
+        FragmentViewPagerAdapter adapter = new FragmentViewPagerAdapter(getChildFragmentManager());
         Fragment newfragment = new ContentFragment();
         Bundle data = new Bundle();
         data.putInt("id", 0);
